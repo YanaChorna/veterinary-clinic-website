@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VetCare - Ветеринарна клініка</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-flex">
+            <a href="#" class="logo">
+                <img src="image/logo.svg" alt="VetCare Logo">
+                VetCare
+            </a>
+            
+            <input type="checkbox" id="burger" class="burger-check">
+            <label for="burger" class="burger-icon">☰</label>
+
+            <nav class="nav-menu">
+                <div class="dropdown">
+                    <a href="#services" class="dropdown-trigger">Послуги ▾</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#services">Консультація</a></li>
+                        <li><a href="#services">Вакцинація</a></li>
+                        <li><a href="#services">Хірургія</a></li>
+                        <li><a href="#services">Аналізи</a></li>
+                    </ul>
+                </div>
+                <a href="#doctors">Лікарі</a>
+                <a href="#prices">Ціни</a>
+                <a href="#reviews">Відгуки</a>
+                <a href="#contacts">Контакти</a>
+            </nav>
+
+            <a href="#contacts" class="header-phone">
+                <img src="image/telefon.svg" alt="Телефон">
+                (000) 000-00-00
+            </a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-text">
+                <h1>Турбота про ваших<br>улюбленців</h1>
+                <a href="#contacts" class="btn">Записатися</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section bg-light">
+        <div class="container">
+            <div class="title-wrapper">
+                <div class="line"></div>
+                <h2>Наші послуги</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="cards-container">
+                <div class="service-card">
+                    <img src="image/consultatsia.svg" alt="Консультація">
+                    <p>Консультація</p>
+                </div>
+                <div class="service-card">
+                    <img src="image/vaktsunatsia.svg" alt="Вакцинація">
+                    <p>Вакцинація</p>
+                </div>
+                <div class="service-card">
+                    <img src="image/hiryrgia.svg" alt="Хірургія">
+                    <p>Хірургія</p>
+                </div>
+                <div class="service-card">
+                    <img src="image/analizu.svg" alt="Аналізи">
+                    <p>Аналізи</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="doctors" class="section bg-2">
+        <div class="container">
+            <div class="title-wrapper">
+                <div class="line"></div>
+                <h2>Наші лікарі</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="cards-container">
+                <div class="doctor-wrapper">
+                    <img src="image/olena.svg" alt="Олена">
+                    <h3>Олена Шевченко</h3>
+                </div>
+                <div class="doctor-wrapper">
+                    <img src="image/iruna.svg" alt="Ірина">
+                    <h3>Ірина Бондаренко</h3>
+                </div>
+                <div class="doctor-wrapper">
+                    <img src="image/maria.svg" alt="Марія">
+                    <h3>Марія Ковальчук</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="prices" class="section bg-light">
+        <div class="container">
+            <div class="title-wrapper">
+                <div class="line"></div>
+                <h2>Пакети послуг</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="cards-container">
+                <div class="price-card">
+                    <h3>Чек-ап здоров'я</h3>
+                    <div class="price-sum">800 грн</div>
+                    <ul>
+                        <li>Загальний огляд тварини</li>
+                        <li>Вимірювання температури</li>
+                        <li>Консультація ветеринара</li>
+                        <li>Рекомендації щодо догляду</li>
+                    </ul>
+                    <a href="#contacts" class="btn btn-price">Записатися</a>
+                </div>
+                
+                <div class="price-card">
+                    <h3>Вакцинація</h3>
+                    <div class="price-sum">1900 грн</div>
+                    <ul>
+                        <li>Огляд перед щепленням</li>
+                        <li>Вакцина від основних хвороб</li>
+                        <li>Чіпування</li>
+                        <li>Внесення даних у паспорт</li>
+                        <li>Рекомендації після вакцинації</li>
+                    </ul>
+                    <a href="#contacts" class="btn btn-price">Записатися</a>
+                </div>
+
+                <div class="price-card">
+                    <h3>Стерилізація / кастрація</h3>
+                    <div class="price-sum">3200 грн</div>
+                    <ul>
+                        <li>Огляд перед операцією</li>
+                        <li>Анестезія</li>
+                        <li>Проведення операції</li>
+                        <li>Післяопераційний огляд</li>
+                        <li>Рекомендації по відновленню</li>
+                    </ul>
+                    <a href="#contacts" class="btn btn-price">Записатися</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="section reviews-section">
+        <video autoplay muted loop playsinline class="reviews-video-bg">
+            <source src="image/vet-clinic-bg.mp4" type="video/mp4">
+        </video>
+
+        <div class="container">
+            <div class="title-wrapper">
+                <div class="line"></div>
+                <h2>Відгуки</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <img src="image/icon_sasha.svg" alt="Саша" class="avatar">
+                    <div class="review-content">
+                        <div class="review-header">
+                            <h4>Саша Д.</h4>
+                            <span class="stars">★★★★★</span>
+                        </div>
+                        <p>Зверталися вперше і залишилися задоволені.</p>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <img src="image/icon_igor.svg" alt="Ігор" class="avatar">
+                    <div class="review-content">
+                        <div class="review-header">
+                            <h4>Ігор М.</h4>
+                            <span class="stars">★★★★★</span>
+                        </div>
+                        <p>Чудова клініка! Наш песик отримав найкращий догляд.</p>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <img src="image/icon_iruna.svg" alt="Ірина" class="avatar">
+                    <div class="review-content">
+                        <div class="review-header">
+                            <h4>Ірина Ц.</h4>
+                            <span class="stars">★★★★★</span>
+                        </div>
+                        <p>Дуже хороша клініка, лікарі уважні та добрі.</p>
+                    </div>
+                </div>
+
+                <div class="review-more-tablet">
+                    <a href="#" class="btn-more">Більше відгуків</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts" class="section bg-light">
+        <div class="paws-animation">
+            <!-- Ліві лапки -->
+            <div class="paw paw1"></div>
+            <div class="paw paw2"></div>
+            <div class="paw paw3"></div>
+            <div class="paw paw4"></div>
+            <div class="paw paw5"></div>
+            <div class="paw paw6"></div>
+            <div class="paw paw7"></div>
+            <div class="paw paw8"></div>
+            <div class="paw paw9"></div>
+            <div class="paw paw10"></div>
+            
+            <!-- Праві лапки -->
+            <div class="paw paw11"></div>
+            <div class="paw paw12"></div>
+            <div class="paw paw13"></div>
+            <div class="paw paw14"></div>
+            <div class="paw paw15"></div>
+            <div class="paw paw16"></div>
+            <div class="paw paw17"></div>
+            <div class="paw paw18"></div>
+            <div class="paw paw19"></div>
+            <div class="paw paw20"></div>
+        </div>
+        <div class="container contacts-layout">
+            <div class="contacts-left">
+                <div class="title-wrapper left-align">
+                    <h2>Контакти</h2>
+                    <div class="line"></div>
+                </div>
+                
+                <div class="contact-info">
+                    <p><img src="image/telefon.svg" alt="Phone"> (000) 000-00-00</p>
+                    <p><img src="image/mitka.svg" alt="Map"> вулиця Івана Гонти, 5</p>
+                    <p><img src="image/gudunnuk.svg" alt="Time"> Пн-Нд 8:00-20:00</p>
+                </div>
+                
+                <div class="map-wrapper">
+                    <img src="image/karta.svg" alt="Карта" class="map-photo">
+                </div>
+            </div>
+
+           <div class="contacts-right">
+                <form class="contact-form">
+                    <h3>Запис на прийом</h3>
+                    
+                    <fieldset class="form-fieldset">
+                        
+                        <label for="name" class="visually-hidden">Прізвище, ім'я</label>
+                        <input type="text" id="name" name="name" placeholder="Прізвище, ім'я" required>
+
+                        <label for="phone" class="visually-hidden">Номер телефону</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Номер телефону" required>
+
+                        <label for="service" class="visually-hidden">Виберіть послугу</label>
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Виберіть послугу</option>
+                            <option value="consultation">Консультація</option>
+                            <option value="vaccination">Вакцинація</option>
+                            <option value="surgery">Хірургія</option>
+                            <option value="grooming">Стрижка (Грумінг)</option>
+                        </select>
+
+                        <label for="date" class="visually-hidden">Виберіть дату прийому</label>
+                        <input type="text" id="date" name="date" placeholder="Виберіть дату прийому" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+
+                        <label for="comment" class="visually-hidden">Коментар</label>
+                        <input type="text" id="comment" name="comment" placeholder="Коментар">
+                        
+                        <input type="submit" class="btn-submit" value="Записатися">
+                        
+                    </fieldset>
+                </form>
+            </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <img src="image/logo.svg" alt="Logo"> VetCare
+                </div>
+                <div class="footer-address">
+                    <img src="image/mitka.svg" alt="Map"> вулиця Івана Гонти, 5
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-menu">
+                    <a href="#services">Послуги</a>
+                    <a href="#doctors">Лікарі</a>
+                    <a href="#prices">Ціни</a>
+                    <a href="#reviews">Відгуки</a>
+                    <a href="#contacts">Контакти</a>
+                </div>
+                
+                <a href="#contacts" class="footer-phone">
+                    <img src="image/telefon.svg" alt="Phone"> (000) 000-00-00
+                </a>
+                
+                <div class="footer-socials">
+                    <a href="#" aria-label="TikTok"><img src="image/tiktok.svg" alt="TikTok"></a>
+                    <a href="#" aria-label="Facebook"><img src="image/facebook.svg" alt="Facebook"></a>
+                    <a href="#" aria-label="Instagram"><img src="image/inst.svg" alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

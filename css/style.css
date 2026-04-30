@@ -1,0 +1,1052 @@
+/* =========================================
+   1. БАЗОВІ НАЛАШТУВАННЯ (Скидання стилів)
+========================================= */
+* {
+    margin: 0; /* Обнуляємо зовнішні відступи, які браузер ставить за замовчуванням */
+    padding: 0; /* Обнуляємо внутрішні відступи */
+    box-sizing: border-box; /* Вказуємо, що рамки та відступи (padding) входять у загальну ширину і висоту елемента. Це не дає блокам ламатися. */
+    font-family: 'Inter', Arial, sans-serif; /* Встановлюємо шрифт Inter для всього сайту. Якщо його немає — Arial */
+}
+
+body {
+    color: #474747; /* Основний колір тексту — темно-сірий (легше читати, ніж чисто чорний) */
+    background-color: #ffffff; /* Задаємо чисто білий фон для всієї сторінки */
+    line-height: 1.5; /* Робимо відстань між рядками тексту трохи більшою для зручності читання */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+a { 
+    text-decoration: none; /* Прибираємо стандартне синє підкреслення у всіх посилань */
+    color: inherit; /* Кажемо посиланням брати колір у того блоку, в якому вони знаходяться */
+}
+
+ul { 
+    list-style: none; /* Прибираємо стандартні чорні крапки у списків (теги <ul> та <li>) */
+}
+
+/* =========================================
+   2. ГЛОБАЛЬНІ КЛАСИ (Сітка та Фони)
+========================================= */
+/* Головний контейнер, який тримає весь контент по центру екрана і не дає йому розтягуватися нескінченно */
+.container {
+    max-width: 1100px; /* Максимальна ширина контенту на великих моніторах */
+    margin: 0 auto; /* margin: зверху/знизу 0, по боках auto. Це центрує блок по горизонталі */
+    padding: 0 20px; /* Робимо по 20px з боків */
+}
+
+/* Стандартний клас для відступів кожної великої секції сайту */
+.section {
+    padding: 80px 0; /* 80px відступ зверху і знизу, 0 — по боках (боки вже контролює .container) */
+}
+
+/* Допоміжний клас для світло-сірого фону (використовуємо для секцій Послуги, Ціни, Контакти) */
+.bg-light {
+    background-color: #E8E8E8; 
+}
+
+/* Допоміжний клас для фону з візерунком (Секція Наші лікарі) */
+.bg-2 {
+    background-image: url('../image/background3.svg'); /* Шлях до картинки-фону */
+    background-size: cover; /* Розтягує картинку так, щоб вона повністю закрила блок без порожніх місць */
+    background-position: center; /* Центрує картинку, якщо вона більша за блок */
+    background-color: #EBF2F2; /* Запасний колір фону, який покажеться, поки картинка вантажиться */
+}
+
+/* =========================================
+   3. УНІВЕРСАЛЬНІ КОМПОНЕНТИ (Кнопки, Заголовки)
+========================================= */
+/* Основний стиль для всіх кнопок на сайті */
+.btn {
+    background-color: #7C9699; 
+    color: white; /* Колір тексту на кнопці */
+    padding: 15px 40px; /* Внутрішні відступи: 15px зверху/знизу, 40px зліва/справа */
+    border-radius: 30px; /*Заокруглюємо кути, щоб кнопка була "овальною" */
+    font-size: 16px; /* Розмір шрифту */
+    font-weight: bold; /* Робимо текст жирним */
+    border: none; /* Прибираємо стандартну рамку навколо кнопки */
+    cursor: pointer; /* Змінюємо курсор на "руку з пальцем" при наведенні */
+    display: inline-block; /* Дозволяє задавати кнопці ширину, висоту та відступи (як блоку), але вона не займає весь рядок */
+    transition: transform 0.3s;
+}
+
+/* Ефект при наведенні мишки на кнопку (Hover) */
+.btn:hover {
+    background-color: #5c7477; /* Змінюємо колір на трохи темніший */
+    transform: scale(1.02); /* Кнопка візуально збільшується на 2% */
+}
+
+/* Обгортка для заголовків секцій (центрує текст і декоративні лінії) */
+.title-wrapper {
+    display: flex; /* Вмикаємо Flexbox, щоб поставити лінії і текст в один горизонтальний ряд */
+    align-items: center; /* Вирівнюємо їх по вертикалі по центру один одного */
+    justify-content: center; /* Центруємо весь цей блок по горизонталі сторінки */
+    margin-bottom: 50px; /* Відступ вниз до контенту (карток) */
+}
+
+/* Модифікатор для вирівнювання заголовка по лівому краю (використовується в секції Контакти) */
+.title-wrapper.left-align {
+    justify-content: flex-start; /* Притискає заголовок до лівого краю */
+}
+
+/* Стиль самого тексту заголовка (Наші послуги, Наші лікарі тощо) */
+.title-wrapper h2 {
+    font-size: 32px; /* Великий шрифт */
+    margin: 0 20px; /* Робимо відступи від тексту до декоративних ліній по боках */
+    color: #474747; 
+}
+
+/* Декоративна лінія біля заголовків (--- Заголовок ---) */
+.line {
+    height: 2px; /* Товщина лінії */
+    width: 350px; /* Довжина лінії */
+    background-color: #A9BDBF; /* Колір лінії */
+}
+
+/* Універсальний контейнер-сітка для карток (Послуги, Лікарі, Ціни) */
+.cards-container {
+    display: flex; /* Вмикаємо Flexbox, щоб картки стали в ряд */
+    flex-wrap: wrap; /* Дозволяємо карткам переноситись на новий рядок, якщо вони не влазять в екран */
+    justify-content: center; /* Центруємо картки, якщо їх мало і вони не займають всю ширину */
+    gap: 30px; /* Задаємо однакову відстань між усіма картками (і по вертикалі, і по горизонталі) */
+}
+
+/* =========================================
+   4. ШАПКА САЙТУ (HEADER)
+========================================= */
+.burger-check, .burger-icon {
+    display: none;
+}
+
+.header {
+    background-color: #CFE1DE; /* Світлий колір шапки */
+    padding: 20px 0; /* Відступ від країв екрана до тексту шапки */
+    position: sticky; /* Шапка буде прокручуватися до верху екрана і "прилипне" там */
+    top: 0; /* Вказуємо, що прилипнути треба саме до самого верху (0px) */
+    z-index: 100; /* Встановлюємошар" на 100. Це гарантує, що шапка буде поверх усіх інших картинок і текстів при прокрутці */
+}
+
+/* Гнучкий контейнер всередині шапки */
+.header-flex {
+    display: flex; /* Вмикаємо Flexbox */
+    justify-content: space-between; /* Максимально розсуваємо 3 елементи (Лого, Меню, Кнопка) по краях */
+    align-items: center; /* Вирівнюємо їх центри по одній горизонтальній лінії */
+}
+
+/* Стиль логотипу */
+.logo {
+    display: flex; /* Робимо лого гнучким, щоб іконка і текст стояли поруч */
+    align-items: center; /* Вирівнюємо іконку і текст по центру */
+    font-size: 35px;
+    font-weight: bold;
+    color: #474747;
+}
+
+.logo img {
+    width: 60px; /* Розмір іконки логотипу */
+    margin-right: 10px; /* Відступ від іконки до тексту "VetCare" */
+}
+
+/* Головне навігаційне меню */
+.nav-menu {
+    display: flex; /* Ставимо всі посилання меню в один ряд */
+    gap: 20px; /* Відстань між кожним пунктом меню */
+}
+
+.nav-menu a {
+    font-weight: 600; /* Напівжирний текст */
+    font-size: 20px; 
+    transition: color 0.3s; /* Плавна зміна кольору при наведенні */
+}
+
+.nav-menu a:hover {
+    color: #7C9699; /* Колір при наведенні */
+}
+
+/* Кнопка з номером телефону справа в шапці */
+.header-phone {
+    background-color: #7C9699;
+    color: white;
+    padding: 10px 25px; /* Внутрішні відступи роблять посилання схожим на кнопку */
+    border-radius: 30px; /* Заокруглюємо краї */
+    display: flex; /* Ставимо іконку телефону і текст в ряд */
+    align-items: center; /* Вирівнюємо по центру */
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.header-phone:hover {
+    background-color: #5c7477;
+}
+
+.header-phone img {
+    width: 30px; /* Розмір іконки телефону */
+    margin-right: 8px; /* Відступ до номера */
+    filter: brightness(0) invert(1); /* перефарбовує чорну SVG іконку телефону в чисто білу */
+}
+
+/* --- Налаштування випадаючого меню "Послуги" --- */
+.dropdown {
+    position: relative; 
+    display: inline-block;
+}
+
+.dropdown-trigger {
+    cursor: pointer; /* Змінюємо курсор, показуючи, що сюди можна клікнути/навести */
+}
+
+/* Саме віконце з меню, яке випадає */
+.dropdown-content {
+    display: none; /* За замовчуванням меню повністю сховане */
+    position: absolute; /*  Відриваємо меню від загального потоку, щоб воно накладалося ПОВЕРХ інших елементів, а не розсувало їх */
+    background-color: #ffffff; /* Білий фон віконця */
+    min-width: 200px; /* Мінімальна ширина віконця */
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.1); /* Легка тінь, щоб вікно виділялося */
+    border-radius: 30px; /* Заокруглюємо кути віконця */
+    padding: 10px 0; /* Відступи всередині вікна зверху і знизу */
+    top: 100%; /* з'явиться ідеально під словом "Послуги" */
+    left: 0; /* Вирівнюємо по лівому краю слова "Послуги" */
+    z-index: 1000; /* Ставимо дуже високий шар, щоб меню перекривало навіть банер */
+    border: 1px solid #CFE1DE; /* Тонка рамка навколо меню */
+    animation: fadeIn 0.3s ease; /* Додаємо плавну анімацію появи  */
+}
+
+/* Опис анімації появи випадаючого меню */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); } /* меню прозоре і зміщене вниз на 10px */
+    to { opacity: 1; transform: translateY(0); } /* меню повністю видиме і стоїть на своєму місці */
+}
+
+.dropdown-content li {
+    width: 100%; /* Кожен пункт займає всю ширину віконця */
+}
+
+.dropdown-content a {
+    color: #474747;
+    padding: 12px 20px; /* Область кліку (відступи) для кожного підпункту */
+    display: block; /* Робить так, щоб клікати можна було по всьому рядку, а не тільки по тексту */
+    font-size: 16px !important; /* Робимо шрифт меншим, ніж у головного меню (!important перебиває стилі .nav-menu a) */
+    font-weight: 500 !important; /* Робимо шрифт трохи тоншим */
+    transition: background 0.3s; /* Плавна зміна фону при наведенні на пункт */
+}
+
+.dropdown-content a:hover {
+    background-color: #F4F8F8; /* Світло-сірий фон при наведенні мишки на підпункт */
+    color: #7C9699;
+    border-radius: 30px;
+}
+
+/* Коли ми наводимо мишку (:hover) на батьківський клас .dropdown,
+   ми беремо клас .dropdown-content, який всередині нього, і робимо його видимим (block) */
+.dropdown:hover .dropdown-content {
+    display: block; 
+}
+
+/* =========================================
+   5. ГОЛОВНИЙ ЕКРАН (HERO) - Банер з собакою і котом
+========================================= */
+.hero {
+    background-image: url('../image/background1.jpg'); /* Шлях до фотографії */
+    background-size: cover; /* Фото масштабується, щоб заповнити всю площу банера без деформацій */
+    background-position: center bottom; /* Вирівнюємо фото по центру і по нижньому краю (щоб тваринку було краще видно) */
+    background-color: #f0f5f7; /* Запасний колір фону */
+    height: 850px; /* Задаємо висоту для головного екрана */
+    display: flex; /* Вмикаємо гнучку сітку */
+    align-items: flex-start; /* Притискаємо контент (текст) до верхньої частини екрану */
+    padding-top: 130px; /* Відступ зверху до тексту */
+}
+
+/* Налаштування контейнера саме для Hero екрану */
+.hero .container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* Притискаємо текст до лівого краю контейнера */
+}
+
+/* Блок з текстом на банері */
+.hero-text {
+    max-width: 800px; /* Обмежуємо ширину тексту, щоб він не розтягувався на весь екран */
+    text-align: left; /* Вирівнюємо текст по лівому краю */
+}
+
+.hero h1 {
+    font-size: 80px; /* Величезний шрифт для головного заголовка */
+    margin-bottom: 60px; /* Відступ від заголовка до кнопки */
+    color: #474747;
+    line-height: 1.5; /* Інтервал між рядками */
+}
+
+/* Стилі для кнопки на головному банері (робимо її більшою за інші) */
+.hero .btn {
+    padding: 20px 60px; /* Більші внутрішні відступи */
+    font-size: 22px; /* Більший шрифт */
+    border-radius: 50px; /* Більше заокруглення */
+}
+
+/* =========================================
+   6. СЕКЦІЯ: НАШІ ПОСЛУГИ
+========================================= */
+.service-card {
+    background-color: white; /* Білий фон картки */
+    width: 240px; /* Фіксована ширина картки послуги */
+    padding: 60px 20px; /* Відступи всередині картки (40 зверху/знизу, 20 по боках) */
+    border-radius: 30px; /* Заокруглені кути картки */
+    text-align: center; /* Центруємо іконку і текст всередині */
+    border: 2px solid #E1E8E8; /*рамка навколо картки */
+    transition: transform 0.3s, box-shadow 0.3s; /* Плавна анімація для ховера */
+}
+
+/* Анімація: при наведенні на картку*/
+.service-card:hover {
+    transform: translateY(-5px); /* Зсуваємо картку по осі Y (вертикально) вгору на 5px */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05); /* Додаємо м'яку напівпрозору тінь */
+}
+
+.service-card img {
+    width: 70px; /* Розмір іконки послуги */
+    height: 70px;
+    margin-bottom: 20px; /* Відступ від іконки до тексту */
+}
+
+.service-card p {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* =========================================
+   7. СЕКЦІЯ: НАШІ ЛІКАРІ
+========================================= */
+.doctor-wrapper {
+    background-color: #B5C4C5; /* Світло-сіро-зелений фон картки лікаря */
+    width: 320px; /* Ширина картки */
+    padding: 20px; /* Відступи всередині картки від країв до фото */
+    border-radius: 30px; /* Заокруглюємо саму картку */
+    text-align: center; /* Центруємо ім'я лікаря */
+    transition: transform 0.3s, box-shadow 0.3s; 
+}
+
+
+.doctor-wrapper:hover {
+    transform: translateY(-5px); /* Зсуваємо картку по осі Y (вертикально) вгору на 5px */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Додаємо м'яку напівпрозору тінь */
+    }
+
+
+.doctor-wrapper img {
+    width: 100%; /* Фото займає всю доступну ширину всередині картки */
+    height: 300px; /* Фіксована висота для фотографій */
+    object-fit: cover; /* Зберігає пропорції обличчя лікаря. Якщо фото нестандартне, воно обріжеться по краях, але не сплюснеться */
+    border-radius: 30px; /* Заокруглюємо саму фотографію */
+    margin-bottom: 15px; /* Відступ від фото до імені */
+}
+
+.doctor-wrapper h3 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #474747;
+}
+
+/* =========================================
+   8. СЕКЦІЯ: ПАКЕТИ ПОСЛУГ (ЦІНИ)
+========================================= */
+
+.price-card {
+    background-color: white; /* Білий фон картки тарифу */
+    flex: 1; /* Кожна картка бере собі однакову частку вільного простору  */
+    padding: 40px 30px; /* Відступи всередині */
+    border-radius: 30px; /* Заокруглення */
+    border: 2px solid #E1E8E8; /* Рамка */
+   transition: transform 0.3s, box-shadow 0.3s; 
+    display: flex;
+    flex-direction: column; /* Ставимо елементи в картці (заголовок, ціна, список, кнопка) в стовпчик */
+    text-align: left; 
+}
+
+.price-card:hover {
+    background-color:#E1E8E8;
+    transform: translateY(-5px); /* Зсуваємо картку по осі Y (вертикально) вгору на 5px */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05); /* Додаємо м'яку напівпрозору тінь */
+    }
+
+.price-card h3 {
+    font-size: 24px; /* Назва пакету послуг */
+    margin-bottom: 15px;
+    text-align: center; 
+}
+
+.price-sum {
+    text-align: center; 
+    font-size: 32px; 
+    font-weight: bold;
+    color: #7C9699; 
+    margin-bottom: 25px; /* Відступ до списку */
+}
+
+.price-card ul {
+    flex-grow: 1;
+    margin-bottom: 25px; /* Відступ до кнопки */
+}
+
+.price-card ul li {
+    margin-bottom: 12px; /* Відстань між пунктами списку */
+    position: relative; /* Робимо li відносною точкою відліку, щоб позиціювати кастомну галочку (див. нижче) */
+    padding-left: 20px; /* Робимо відступ зліва, щоб звільнити місце під галочку */
+    font-size: 15px;
+}
+
+
+.price-card ul li::before {
+    content: '✔'; /* Текст/символ, який буде згенеровано перед текстом <li> */
+    position: absolute; /* Відриваємо галочку від потоку... */
+    left: 0; /*  притискаємо її на самий лівий край 
+    color: #474747; /* Колір галочки */
+}
+
+.btn-price {
+    width: 100%; /* Кнопка в тарифах розтягується на всю ширину картки */
+    text-align: center; /* Текст на кнопці по центру */
+    padding: 12px 20px; /* Трохи менші відступи, ніж у головної кнопки */
+}
+
+/* =========================================
+   9. СЕКЦІЯ: ВІДГУКИ (З фоновим відео)
+========================================= */
+.reviews-section {
+    position: relative; 
+    min-height: 550px; /* Мінімальна висота секції */
+    overflow: hidden; /* Обрізає краї відео, якщо воно ширше/вище за цю секцію */
+    display: flex;
+    align-items: center; /* Вертикально центруємо контент (контейнер з відгуками) */
+    background-color: #F4F8F8; /* Запасний колір, якщо відео не завантажиться */
+}
+
+/* Псевдоелемент ::before створює віртуальний шар, який ми використовуємо як "плівку" поверх відео */
+.reviews-section::before {
+    content: ""; /* Обов'язкова властивість для псевдоелементів (навіть порожня) */
+    position: absolute; /* Відриваємо шар і накладаємо його на секцію */
+    top: 0;
+    left: 0;
+    width: 100%; /* Плівка на всю ширину секції */
+    height: 100%; /* Плівка на всю висоту секції */
+    background-color: rgba(255, 255, 255, 0.3); /* Задаємо білий колір (255,255,255) з рівнем непрозорості 30% (0.3). Це висвітлює відео і робить текст читабельним. */
+    z-index: 1; /* Шар позиції: 1. Це означає, що плівка лежить ВИЩЕ за відео (яке має 0), але НИЖЧЕ за текст (який має 2). */
+}
+
+/* Налаштування фонового відео */
+.reviews-video-bg {
+    position: absolute;
+    min-width: 100%; /* Відео завжди заповнює ширину */
+    min-height: 100%; /* Відео завжди заповнює висоту */
+    width: auto;
+    height: auto;
+    z-index: 0; /* Відео лежить на самому дні, під усіма шарами */
+    object-fit: cover; /* Гарантує, що відео збереже пропорції і покриє весь блок */
+}
+
+/* Контейнер з текстом і відгуками */
+.reviews-section .container {
+    position: relative; /* Дає можливість задати z-index */
+    z-index: 2; /* Піднімаємо текст НАД відео (0) і НАД білою плівкою (1) */
+}
+
+/* Сітка для карток відгуків */
+.reviews-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Відстань між картками відгуків */
+    max-width: 900px; /* Звужуємо сітку відгуків, щоб вона виглядала компактніше по центру екрана */
+    margin: 0 auto; /* Центруємо саму сітку */
+}
+
+/* Дизайн картки-відгуку */
+.review-card {
+    background: rgba(255, 255, 255, 0.6); /* Напівпрозорий білий фон (70% білого) */
+    padding: 15px 30px; /* Відступи всередині картки */
+    border-radius: 30px; /* Сильне заокруглення робить форму "таблетки" */
+    display: flex; /* Розташовуємо фото людини і текст відгуку в один горизонтальний ряд */
+    align-items: center; /* Центруємо їх по вертикалі */
+    width: calc(50% - 20px); /* кожна картка займає рівно 50% мінус відступ між ними (gap: 20px). */
+    min-width: 300px; /* Якщо екран звужується, картка не стиснеться менше ніж 300px (а просто перенесеться на новий рядок) */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* тінь */
+}
+
+/* Фотографія людини у відгуку */
+.avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%; /* Радіус 50% робить з квадратної картинки ідеальний круг */
+    margin-right: 15px; /* Відступ від фото до тексту відгуку */
+    object-fit: cover; /* Зберігає пропорції обличчя, якщо фото не квадратне */
+}
+
+/* Колір заголовка секції "Відгуки"  */
+.reviews-section .title-wrapper h2 {
+    color: #474747; 
+}
+
+/* Шапка самого відгуку (містить Ім'я та Зірочки) */
+.review-header {
+    display: flex;
+    justify-content: space-between; /* Розкидає Ім'я вліво, а Зірки вправо */
+    align-items: center;          
+    width: 100%; /* Шапка займає всю ширину своєї колонки */
+    margin-bottom: 5px; /* Відступ вниз до самого тексту відгуку */
+}
+
+.review-header h4 {
+    font-size: 18px; /* Розмір шрифту для імені */
+}
+
+.stars {
+    color: #F4C150; /* Жовтий колір для символів ★★★★★ */
+    font-size: 18px;
+}
+
+/* Текст відгуку */
+.review-content p {
+    font-size: 15px;
+    margin-top: 5px;
+    color: #555; /* Трохи світліший колір тексту, щоб не зливався з іменем */
+}
+ 
+/* Оболонка для кнопки "Більше відгуків" */
+.review-more-tablet {
+    background: transparent; /* Робимо комірку прозорою */
+    width: calc(50% - 20px); /* Вона займає рівно 50% місця, як і картка Ірини */
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Центрує маленьку кнопку всередині прозорої комірки */
+    box-shadow: none; 
+    padding: 0;
+}
+
+/* Сама маленька кнопка (посилання), яка лежить всередині */
+.btn-more {
+    background: #7C9699; 
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 30px;
+    width: 220px; /* Маленька ширина */
+    height: 60px; /* Акуратна висота */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+/* Ефект при наведенні ТІЛЬКИ на маленьку кнопку */
+.btn-more:hover {
+    background: #5c7477;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================
+   10. СЕКЦІЯ: КОНТАКТИ ТА ФОРМА
+========================================= */
+/* --- АНІМАЦІЯ ЛАПОК НА ФОНІ --- */
+#contacts {
+    position: relative; /* Робимо секцію точкою відліку для лапок */
+    overflow: hidden; /* Щоб лапки не вилазили за межі секції */
+}
+
+/* Контейнер з інформацією має бути НАД лапками */
+#contacts .container {
+    position: relative;
+    z-index: 2; 
+}
+
+/* Контейнер для лапок */
+.paws-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /*щоб лапки не перекривали кліки по карті чи формі */
+    z-index: 0; /*на задньому плані */
+}
+/* Базовий стиль */
+.paw {
+    position: absolute;
+    width: 30px; 
+    height: 30px;
+    background-image: url('../image/logo.svg'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0; 
+    
+    /* Збільшили час до 8 секунд, щоб усі 10 лапок встигли постояти на екрані */
+    animation: stepTrail 8s infinite linear; 
+}
+
+/* Розставляємо лапки зигзагом */
+/* --- ЛІВА ДОРІЖКА ЛАПОК --- */
+.paw1 { bottom: 10%; left: 2%;  animation-delay: 0s;   transform: rotate(-25deg); } 
+.paw2 { bottom: 18%; left: 6%;  animation-delay: 0.4s; transform: rotate(15deg); } 
+.paw3 { bottom: 26%; left: 2%;  animation-delay: 0.8s; transform: rotate(-25deg); } 
+.paw4 { bottom: 34%; left: 6%;  animation-delay: 1.2s; transform: rotate(15deg); } 
+.paw5 { bottom: 42%; left: 2%;  animation-delay: 1.6s; transform: rotate(-25deg); } 
+.paw6 { bottom: 50%; left: 6%;  animation-delay: 2.0s; transform: rotate(15deg); } 
+.paw7 { bottom: 58%; left: 2%;  animation-delay: 2.4s; transform: rotate(-25deg); } 
+.paw8 { bottom: 66%; left: 6%;  animation-delay: 2.8s; transform: rotate(15deg); } 
+.paw9 { bottom: 74%; left: 2%;  animation-delay: 3.2s; transform: rotate(-25deg); } 
+.paw10{ bottom: 82%; left: 6%;  animation-delay: 3.6s; transform: rotate(15deg); } 
+/* --- ПРАВА ДОРІЖКА ЛАПОК --- */
+.paw11 { bottom: 10%; right: 2%; animation-delay: 0s;   transform: rotate(-25deg); } 
+.paw12 { bottom: 18%; right: 6%; animation-delay: 0.4s; transform: rotate(15deg); } 
+.paw13 { bottom: 26%; right: 2%; animation-delay: 0.8s; transform: rotate(-25deg); } 
+.paw14 { bottom: 34%; right: 6%; animation-delay: 1.2s; transform: rotate(15deg); } 
+.paw15 { bottom: 42%; right: 2%; animation-delay: 1.6s; transform: rotate(-25deg); } 
+.paw16 { bottom: 50%; right: 6%; animation-delay: 2.0s; transform: rotate(15deg); } 
+.paw17 { bottom: 58%; right: 2%; animation-delay: 2.4s; transform: rotate(-25deg); } 
+.paw18 { bottom: 66%; right: 6%; animation-delay: 2.8s; transform: rotate(15deg); } 
+.paw19 { bottom: 74%; right: 2%; animation-delay: 3.2s; transform: rotate(-25deg); } 
+.paw20 { bottom: 82%; right: 6%; animation-delay: 3.6s; transform: rotate(15deg); }
+
+/* Анімація залишається найпростішою: змінюємо тільки прозорість */
+@keyframes stepTrail {
+    0%   { opacity: 0; }
+    5%   { opacity: 0.3; }  /* Лапка з'являється */
+    50%  { opacity: 0.15; } /* Довго тримається, поки з'являються інші 9 лапок */
+    70%  { opacity: 0; }    /* Плавно розчиняється */
+    100% { opacity: 0; }    /* Чекає початку нового циклу */
+}
+
+/* Головний контейнер секції контактів */
+.contacts-layout {
+    display: flex; 
+    justify-content: space-between; 
+    flex-wrap: wrap; 
+    gap: 50px; 
+}
+
+/* Розділяємо секцію на 2 рівні колонки (Ліва - карта, Права - форма) */
+.contacts-left, .contacts-right {
+    width: 45%; 
+    min-width: 320px; 
+}
+
+/* Стилі для кожного рядка інфи (Телефон, Адреса, Годинник) */
+.contact-info p {
+    font-size: 18px;
+    margin-bottom: 15px;
+    display: flex; 
+    align-items: center; 
+}
+
+/* Іконки біля тексту контактів */
+.contact-info img {
+    width: 25px; 
+    margin-right: 15px; 
+}
+
+/* Оболонка (рамка) для фотографії карти */
+.map-wrapper {
+    background-color: white; 
+    padding: 15px; 
+    border-radius: 30px; 
+    max-width: 400px; 
+    margin-top: 20px; 
+    border: 1px solid #E1E8E8; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+}
+
+/* Зображення самої карти (Google Maps скріншот) */
+.map-photo {
+    width: 100%; 
+    border-radius: 20px; 
+    display: block; 
+}
+
+.contact-form {
+    background-color: #E8EDEE; 
+    padding: 40px; 
+    border-radius: 20px; 
+    display: flex;
+    flex-direction: column; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+    margin-top: 90px;
+}
+
+.contact-form h3 {
+    font-size: 26px;
+    text-align: left; 
+    margin-bottom: 25px;
+    color: #474747;
+}
+
+.form-fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+}
+
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Стиль для всіх полів вводу */
+.contact-form input[type="text"], 
+.contact-form input[type="tel"],
+.contact-form input[type="date"],
+.contact-form select {
+    width: 100%;
+    padding: 15px 20px; 
+    border-radius: 8px; 
+    border: 1px solid #ffffff; 
+    font-size: 15px; 
+    background-color: #ffffff; 
+    outline: none; 
+    color: #474747;
+    transition: border-color 0.3s;
+}
+
+.contact-form select {
+    appearance: none; 
+    -webkit-appearance: none;
+    background-image: url('../image/arrow.svg');
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    cursor: pointer;
+}
+
+/* Рамка при кліку */
+.contact-form input:focus, 
+.contact-form select:focus {
+    border: 1px solid #7C9699; 
+}
+
+.contact-form input::placeholder {
+    color: #888;
+}
+
+/* Кнопка "Записатися" */
+.contact-form input[type="submit"] {
+    align-self: flex-end; /* Притискає кнопку вправо */
+    background-color: #7C9699; 
+    color: white;
+    padding: 12px 35px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    width: auto; 
+}
+
+.contact-form input[type="submit"]:hover {
+    background-color: #5c7477; 
+}
+
+/* =========================================
+   11. ПІДВАЛ (FOOTER)
+========================================= */
+.footer {
+    background-color: #CFE1DE; /* Світло-бірюзовий колір підвалу (такий самий як у шапці) */
+    padding: 40px 0; /* Відступи зверху і знизу */
+}
+
+/* Верхня частина підвалу (Лого зліва, Адреса справа) */
+.footer-top {
+    display: flex;
+    justify-content: space-between; /* Розкидає логотип і адресу по різних краях екрана */
+    align-items: center; /* Вертикальне центрування */
+    margin-bottom: 30px; /* Відступ до нижньої лінії футера */
+}
+
+/* Логотип в підвалі */
+.footer-logo {
+    font-size: 32px;
+    font-weight: bold;
+    display: flex;
+    align-items: center; /* Ставить іконку лого та текст в одну лінію */
+}
+
+.footer-logo img {
+    width: 40px; /* Менша іконка, ніж в шапці */
+    margin-right: 15px;
+}
+
+/* Адреса в підвалі */
+.footer-address {
+    font-size: 18px;
+    display: flex;
+    align-items: center; /* Іконка метки поруч з текстом */
+    font-weight: bold;
+}
+
+.footer-address img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+/* Нижня частина підвалу (Меню, Телефон, Соцмережі) */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between; /* Розкидає 3 блоки максимально далеко один від одного */
+    align-items: center;
+    flex-wrap: wrap; /* Дозволяє блокам впасти на новий рядок, якщо екран звузиться */
+    gap: 20px; /* Мінімальна відстань між елементами при перенесенні */
+}
+
+/* Навігація в футері */
+.footer-menu {
+    display: flex; /* Ставить посилання в горизонтальний ряд */
+    gap: 25px; /* Відстань між посиланнями */
+}
+
+.footer-menu a {
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+/* Ефект наведення на посилання футера */
+.footer-menu a:hover {
+    color: #7C9699; /* Текст стає фірмового кольору */
+}
+
+/* Кнопка-телефон в футері (ідентична тій, що в шапці) */
+.footer-phone {
+    background-color: #7C9699;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.footer-phone img {
+    width: 20px; 
+    margin-right: 8px;
+    filter: brightness(0) invert(1); /* Робимо SVG іконку білою */
+}
+
+/* --- Іконки соціальних мереж у підвалі --- */
+.footer-socials {
+    display: flex; /* Ставимо іконки в один ряд */
+    gap: 15px; /* Відстань між іконками (TikTok, FB, Inst) */
+    align-items: center; /* Вирівнюємо по вертикалі */
+}
+
+/* Посилання (тег <a>), що слугує круглою оболонкою-кнопкою для SVG-іконки */
+.footer-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Ідеально центруємо картинку всередині круга */
+    width: 40px; /* Фіксована ширина круга */
+    height: 40px; /* Фіксована висота круга */
+    background-color: transparent; /* За замовчуванням фону немає (прозорий) */
+    border-radius: 50%; /* Робимо з квадратної області ідеальне коло */
+    transition: transform 0.3s, background-color 0.3s; /* Анімація підстрибування і появи білого фону */
+}
+
+/* Самі SVG-картинки іконок (TikTok, Facebook, Instagram) */
+.footer-socials img {
+    width: 24px; /* Задаємо розмір іконкам */
+    height: 24px;
+    object-fit: contain; /* Забороняємо іконкам деформуватися */
+}
+
+/* Ефект при наведенні мишки (Hover) на іконку соцмережі */
+.footer-socials a:hover {
+    background-color: #ffffff; /* З'являється білий фон-кружечок під іконкою */
+    transform: translateY(-3px); /* Іконка злегка "підстрибує" вгору на 3 пікселі */
+}
+
+/* =========================================
+   АДАПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ (Телефон)
+========================================= */
+@media (max-width: 768px) {
+    /* --- 1. Шапка та Бургер-меню --- */
+    .header-flex { position: relative; }
+    
+    .burger-icon {
+        display: block;
+        font-size: 32px;
+        cursor: pointer;
+        color: #474747;
+    }
+
+    .header-phone { display: none; } /* Ховаємо кнопку в шапці */
+
+    .nav-menu {
+        display: none; 
+        position: absolute; 
+        top: 100%; 
+        left: 0;
+        width: 100%; 
+        background-color: #CFE1DE; 
+        flex-direction: column; 
+        text-align: center;
+        padding: 20px 0;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1); 
+        gap: 0; 
+    }
+
+    .nav-menu a { padding: 15px 0; display: block; width: 100%; }
+    .burger-check:checked ~ .nav-menu { display: flex; }
+
+    /* --- 2. Головний екран (Hero) --- */
+    .hero { 
+        height: auto; 
+        padding-top: 60px; 
+        padding-bottom: 250px; /* Відступ знизу, щоб видно було тварин */
+        background-position: center bottom; 
+    }
+    
+    .hero h1 { 
+        font-size: 36px; /* Зменшуємо шрифт заголовка */
+        margin-bottom: 25px; 
+        line-height: 1.2;
+    }
+    
+    .hero .btn { 
+        padding: 12px 30px; /* Зменшуємо кнопку */
+        font-size: 16px; 
+    }
+
+    /* --- 3. Заголовки секцій --- */
+    .section { padding: 50px 0; } /* Зменшуємо відступи між секціями */
+    .title-wrapper h2 { font-size: 24px; }
+    .line { width: 60px; } /* Робимо лінії коротшими */
+
+    /* --- 4. Всі картки ставимо в стовпчик --- */
+    .cards-container, 
+    #prices .cards-container, 
+    .reviews-grid {
+        flex-direction: column; /* Ставимо вертикально */
+        flex-wrap: nowrap;
+        align-items: center; /* Центруємо */
+        gap: 20px;
+    }
+
+    /* Універсальне правило: всі картки на телефоні займають 100% ширини (але не більше 350px) */
+    .service-card, 
+    .doctor-wrapper, 
+    .price-card, 
+    .review-card, 
+    .review-more-tablet {
+        width: 100%;
+        max-width: 350px;
+        min-width: unset; /* Скидаємо обмеження з комп'ютерної версії */
+        margin: 0 auto;
+    }
+
+   /* --- 5. Контакти (Виправлений макет) --- */
+    .contacts-layout { 
+        flex-direction: column; 
+        gap: 30px; 
+    }
+    
+    .contacts-left, .contacts-right { 
+        width: 100%; 
+        min-width: unset; 
+    }
+
+    /* Робимо гнучкий контейнер з дозволом переносити блоки на новий рядок */
+    .contacts-left {
+        display: flex;
+        flex-wrap: wrap; /* Дозволяє заголовку відштовхнути текст з картою вниз */
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Змушуємо заголовок "Контакти" зайняти 100% ширини верхнього рядка */
+    .contacts-left .title-wrapper {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Текстова інформація */
+    .contact-info { 
+        flex: 1; /* Забирає весь вільний простір зліва від карти */
+        padding-right: 10px; /* Робимо відступ, щоб текст не прилипав до карти */
+    }
+    
+    .contact-info p { 
+        font-size: 13px; /* Зробив шрифт трохи більшим для кращої читабельності */
+        margin-bottom: 12px; 
+    }
+    
+    .contact-info img { 
+        width: 16px; 
+        margin-right: 8px; 
+    }
+
+    /* Маленька квадратна карта справа */
+    .map-wrapper {
+        width: 110px; /* Трохи зменшив карту, щоб дати більше місця довгому тексту */
+        height: 110px;
+        margin-top: 0;
+        padding: 5px;
+        flex-shrink: 0; /* Забороняємо карті деформуватися */
+    }
+    
+    .map-photo { 
+        height: 100%; 
+        object-fit: cover; 
+    }
+
+    /* Форма запису */
+    .contact-form { padding: 25px; }
+    .contact-form h3 { font-size: 22px; }
+    .contact-form button { width: 100%; text-align: center; }
+
+    /* --- 6. Футер --- */
+    .footer { padding: 30px 0; }
+    
+    .footer-top, 
+    .footer-bottom { 
+        flex-direction: column; 
+        text-align: center; 
+        gap: 20px; 
+    }
+    
+    .footer-logo, 
+    .footer-address, 
+    .footer-socials { 
+        justify-content: center; 
+    }
+    
+    .footer-menu { 
+        flex-direction: column; /* Меню в стовпчик */
+        gap: 15px; 
+    }
+    .reviews-section {
+        padding: 60px 0; /* Задаємо чіткі відступи зверху і знизу */
+        min-height: auto; /* Скидаємо комп'ютерну висоту */
+    }
+
+    .reviews-video-bg {
+        width: 100%;  /* Жорстко кажемо зайняти 100% ширини */
+        height: 100%; /* Жорстко кажемо зайняти 100% висоти */
+        top: 0;
+        left: 0;
+        object-fit: cover; /* Працюватиме як background-size: cover */
+        object-position: center; /* Завжди фокусуємось на центрі відео */
+    }
+
+    /* Форма запису на мобільному */
+    .contact-form { padding: 25px; }
+    .contact-form h3 { font-size: 22px; }
+    .contact-form input[type="submit"] { 
+        width: 100%; /* На телефоні кнопка розтягується на всю ширину */
+        align-self: center;
+    }
+}
