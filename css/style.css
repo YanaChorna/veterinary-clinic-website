@@ -653,11 +653,13 @@ ul {
     box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
 }
 
-/* Зображення самої карти (Google Maps скріншот) */
+
 .map-photo {
     width: 100%; 
+    height: 250px;
     border-radius: 20px; 
-    display: block; 
+    display: block;
+    border: none;
 }
 
 .contact-form {
@@ -959,12 +961,9 @@ ul {
         min-width: unset; 
     }
 
-    /* Робимо гнучкий контейнер з дозволом переносити блоки на новий рядок */
     .contacts-left {
-        display: flex;
-        flex-wrap: wrap; /* Дозволяє заголовку відштовхнути текст з картою вниз */
-        justify-content: space-between;
-        align-items: center;
+    display: flex;
+    flex-direction: column;
     }
 
     /* Змушуємо заголовок "Контакти" зайняти 100% ширини верхнього рядка */
@@ -984,23 +983,9 @@ ul {
         margin-bottom: 12px; 
     }
     
-    .contact-info img { 
-        width: 16px; 
-        margin-right: 8px; 
-    }
-
-    /* Маленька квадратна карта справа */
     .map-wrapper {
-        width: 110px; /* Трохи зменшив карту, щоб дати більше місця довгому тексту */
-        height: 110px;
-        margin-top: 0;
-        padding: 5px;
-        flex-shrink: 0; /* Забороняємо карті деформуватися */
-    }
-    
-    .map-photo { 
-        height: 100%; 
-        object-fit: cover; 
+        max-width: 100%;
+        margin-top: 15px;
     }
 
     /* Форма запису */
